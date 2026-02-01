@@ -12,7 +12,7 @@ You're about to participate in your own version of **Amnesia Fortnight** - a rap
 
 ## The Amnesia Fortnight Mindset
 
-As you watched in the documentary, Amnesia Fortnight teams:
+As you watch the documentary, you'll see Amnesia Fortnight teams:
 - ✅ Work on projects they've never done before
 - ✅ Learn by doing, not by knowing everything first
 - ✅ Embrace accidents and unexpected discoveries
@@ -54,6 +54,7 @@ As you watched in the documentary, Amnesia Fortnight teams:
    - Open `index.html`
    - Click the lightning bolt icon (Live Preview)
    - You should see the start page in the preview pane
+   - NOTE: The calendar won't work until you publish the page
 
 ✅ **You're ready to start!**
 
@@ -61,7 +62,7 @@ As you watched in the documentary, Amnesia Fortnight teams:
 
 ## How to Work with AI (Your Web Dev Sidekick)
 
-You'll be using **Gemini** (through Google Workspace) to help you modify the start page. Think of it as a collaborative teammate, like the AF leads had.
+You'll be using **[Gemini](https://gemini.google.com/)** (through Google Workspace) to help you modify the start page. Think of it as a collaborative teammate, like the AF leads had.
 
 ### The Workflow
 
@@ -286,7 +287,11 @@ They will! That's part of the process.
 - **Class 2:** Try more ambitious changes, find your direction
 - **Class 3:** Add something that makes it yours, finish up
 
-You don't need to use all the time. If you're happy with what you made, you're done.
+You don't need to use all the time. If you're happy with what you made, you're done and can explore using Gemini to make other types of pages. Here's a prompt starter:
+
+```
+Create a self-contained web page using HTML, CSS, and Javascript with no dependencies that [YOUR IDEA]
+```
 
 ---
 
@@ -301,7 +306,7 @@ You'll notice `calendar.js` is complex JavaScript that fetches events from Googl
 - **Change how it looks:** Modify the calendar styles in `styles.css`
 - **Change initial load time:** You COULD modify `calendar.js`, but it's complex - ask your teacher first
 
-Think of `calendar.js` like a black box that works. You can style the box, hide the box, or move the box, but don't open the box.
+Think of `calendar.js` like a black box that works. You can style the box, hide the box, or move the box, but don't open the box. Well, you can open it to take a look, of course, but don't modify the box! (Yes, I realize my metaphor broke, there.)
 
 ---
 
@@ -313,10 +318,6 @@ This activity is **not graded** because:
 2. **You're experimenting** with tools you haven't formally learned yet
 3. **"Failure" here is just learning** what doesn't work
 4. **Everyone will have different results** and that's perfect
-
-You're making a web page. For a little bit.
-
-Even if you never touch HTML/CSS again (which you will!), you'll always have this experience of MAKING something for the web instead of just using it.
 
 ---
 
