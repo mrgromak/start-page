@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watkinson Start Page</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>The Start Page</h1>
+      <p>Online resources for the Watkinson community.</p>
+    </header>
+    <main>
+      <!-- Account Resources Section: Quick links to Google Workspace and school services with icons -->
+      <section id="account-resources" class="account-resources">
+        <div class="resource-buttons">
+          <a href="https://classroom.google.com/" class="resource-btn">
+            <img src="images/classroom.png" alt="Google Classroom icon" />
+            <span>Classroom</span>
+          </a>
+          <a href="https://mail.google.com/" class="resource-btn">
+            <img src="images/gmail.png" alt="Gmail icon" />
+            <span>Gmail</span>
+          </a>
+          <a href="https://drive.google.com/" class="resource-btn">
+            <img src="images/drive.png" alt="Google Drive icon" />
+            <span>Drive</span>
+          </a>
+          <a href="https://docs.google.com/" class="resource-btn">
+            <img src="images/docs.png" alt="Google Docs icon" />
+            <span>Docs</span>
+          </a>
+          <a href="https://calendar.google.com/" class="resource-btn">
+            <img src="images/calendar.png" alt="Google Calendar icon" />
+            <span>Calendar</span>
+          </a>
+          <a href="https://watkinson.org/forms" class="resource-btn">
+            <img src="images/info.png" alt="Information icon" />
+            <span>Forms/Info</span>
+          </a>
+          <a href="https://app.scoir.com/signin" class="resource-btn">
+            <img src="images/college.png" alt="College planning icon" />
+            <span>College</span>
+          </a>
+          <a href="https://meet.google.com" class="resource-btn">
+            <img src="images/meet.png" alt="Google Meet icon" />
+            <span>Meet</span>
+          </a>
+          <a href="https://watkinson.org/calendar/" class="resource-btn">
+            <img src="images/ram.png" alt="Watkinson Ram logo" />
+            <span>School Events</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Calendar Section: Shows upcoming school events
+           This container starts empty! The calendar.js script fetches events from
+           Google Calendar and fills it in when the page loads. -->
+      <section id="calendar">
+        <div id="calendar-container">
+          <ul id="day-events">
+            <!-- Combined events from both calendars will be inserted here dynamically -->
+          </ul>
+          <button
+            id="load-more-events"
+            class="load-more-button"
+            style="display: none"
+          >
+            Load More Events
+          </button>
+        </div>
+      </section>
+
+      <!-- Subscriptions Section: Links to school's digital subscriptions -->
+      <section id="subscriptions" class="research-periodicals">
+        <div class="subscriptions">
+          <h4>Subscriptions</h4>
+          <div class="research-content">
+            <div class="research-item">
+              <a
+                href="https://soraapp.com/library/watkinsonct"
+                class="tool-link"
+              >
+                <img src="images/sora.png" alt="Sora logo" />
+                Sora Periodicals
+              </a>
+            </div>
+            <div class="research-item">
+              <a
+                href="https://myaccount.nytimes.com/auth/enter-email?response_type=cookie&client_id=lgcl&redirect_uri=https://www.nytimes.com"
+                class="tool-link"
+              >
+                <img src="images/nytimes.png" alt="New York Times logo" />
+                New York Times
+              </a>
+              <p>
+                Login requires a
+                <a
+                  href="https://docs.google.com/document/d/e/2PACX-1vQV1AlSnSCCDVwLkFa2ieOEH4YHeTfDHCJJ0El9eaThISE4L5t7Yr-PU2B5-ZqcAcpURzLLlfMOIl7T/pub"
+                  target="_blank"
+                  >digital pass</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Library Section: Connecticut State Library research databases -->
+      <section id="library" class="research-periodicals">
+        <div class="library">
+          <h4>State Library Research Tools</h4>
+          <p>Requires a library card or teacher-provided code.</p>
+          <div class="research-content">
+            <div class="research-item">
+              <a
+                href="https://search.ebscohost.com/login.aspx?authtype=cookie,ip,cpid&custid=csl&profile=eds_acad"
+                class="tool-link"
+              >
+                ResearchIT CT
+              </a>
+              <p>Search all library databases</p>
+            </div>
+            <div class="research-item">
+              <a
+                href="https://search.ebscohost.com/login.aspx?authtype=cookie,ip,cpid&custid=csl&group=main&profile=ehost_all&defaultdb=aph"
+                class="tool-link"
+              >
+                Academic Search Premier
+              </a>
+              <p>Academic journals and papers</p>
+            </div>
+            <div class="research-item">
+              <a
+                href="https://search.ebscohost.com/login.aspx?authtype=cookie,ip,cpid&custid=csl&group=main&profile=ehost_all&defaultdb=n5h"
+                class="tool-link"
+              >
+                Newspaper Source Plus
+              </a>
+              <p>Newspapers and periodicals</p>
+            </div>
+            <div class="research-item">
+              <a
+                href="https://search.ebscohost.com/login.aspx?authtype=cookie,ip,cpid&custid=csl&group=main&profile=ehost_all&defaultdb=f5h"
+                class="tool-link"
+              >
+                Master File Premier
+              </a>
+              <p>Full-text journals and ebooks</p>
+            </div>
+
+            <div class="research-item">
+              <a
+                href="https://search.ebscohost.com/login.aspx?authtype=ip,uid&custid=s1188783&groupid=main&profile=expl_ms"
+                class="tool-link"
+              >
+                Explora for Middle School
+              </a>
+              and &nbsp;
+              <a
+                href="https://search.ebscohost.com/login.aspx?authtype=ip,uid&custid=s1188783&groupid=main&profile=expl_ss"
+                class="tool-link"
+              >
+                Upper School
+              </a>
+              <p>Curated high-quality articles</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Student Resources Section: Helpful links for students and families -->
+      <section id="student-resources" class="resources-section">
+        <h3>Student Resources</h3>
+        <div class="resource-buttons">
+          <a
+            href="https://sites.google.com/watkinson.org/activities-athletics-hub"
+            class="resource-btn"
+          >
+            <span>Activities and Athletics Hub</span>
+          </a>
+          <a
+            href="https://docs.google.com/document/d/1GfMWoU1Q_ZxTEY4bxc_xz2dzrhsDnR3FnQJoAy-aEvQ/edit?usp=sharing"
+            class="resource-btn"
+          >
+            <span>Attendance Quick Reference Guide</span>
+          </a>
+          <a href="https://watkinson.org/forms/" class="resource-btn">
+            <span>Family Forms and Info</span>
+          </a>
+          <a
+            href="https://docs.google.com/document/d/1Df0FNDjS1T0tar_6NyNZE2YAYhEUstU6Fmcd-KeRITI/edit?usp=sharing"
+            class="resource-btn"
+          >
+            <span>Family Handbook</span>
+          </a>
+          <a href="https://welcome.watkinson.org/Login/" class="resource-btn">
+            <span>Grades and Comments Login</span>
+          </a>
+          <a href="https://watkinson.org/important-dates/" class="resource-btn">
+            <span>Important School Year Dates</span>
+          </a>
+          <a
+            href="https://docs.google.com/document/d/e/2PACX-1vR_BobjZYijZyXbmS_joe5Bj7G1GbuQx7H-p_0h4gIFh4TVLT7lTylPJp2yK5Y-1w/pub"
+            class="resource-btn"
+          >
+            <span>Lunch Menu</span>
+          </a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSee9Ortu5QYcdgt8kEhuDyENFVLFSCYNgWCDogYrSbCduuUZQ/viewform"
+            class="resource-btn"
+          >
+            <span>Peer Mediation Request</span>
+          </a>
+          <a
+            href="https://sites.google.com/watkinson.org/wpc/wpc-home"
+            class="resource-btn"
+          >
+            <span>Watkinson Parent Community</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Faculty Resources Section: Internal tools and forms for faculty -->
+      <section id="faculty-resources" class="resources-section">
+        <h3>Faculty Resources</h3>
+        <div class="resource-buttons">
+          <a
+            href="https://workforcenow.adp.com/public/index.htm"
+            class="resource-btn"
+          >
+            <span>ADP Portal</span>
+          </a>
+          <a href="https://sageapa.com/signin" class="resource-btn">
+            <span>AP Automation</span>
+          </a>
+          <a href="https://forms.gle/C5g7F76pUg5FRfZz8" class="resource-btn">
+            <span>Dining Services Requests</span>
+          </a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdEwvHODOUspCLXnqzpTfPwH7qIcHYwtnhFnqKDMHXh1BC56g/viewform"
+            class="resource-btn"
+          >
+            <span>Fundraiser Scheduling</span>
+          </a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScswensrb4ZmT4VghIOhGAZMWddSg7eA_6M4EeUZP8YZcPQtA/viewform"
+            class="resource-btn"
+          >
+            <span>Professional Development Requests</span>
+          </a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfjfQKPsmJqL8nO5Gb_Qxwuu5TgEID7MyJnA0bm6y7uDzPbXA/viewform?c=0&w=1"
+            class="resource-btn"
+          >
+            <span>Sound & Light Crew Requests</span>
+          </a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdhnu1Vd0GMNh3rdK3e9A-4zMYu9QyYkxHqvIaETbLBuFB53A/viewform"
+            class="resource-btn"
+          >
+            <span>Special Event Form</span>
+          </a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdapbinLXH4jTB5K3K9NlItpGbGX8MKQq23Du7Fq-NuZdoTxQ/viewform"
+            class="resource-btn"
+          >
+            <span>WPC Grant Application</span>
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Icons courtesy of
+        <a href="https://icons8.com/" target="_blank">icons8</a>.
+      </p>
+    </footer>
+
+    <!-- JavaScript: Loads and displays Google Calendar events -->
+    <script src="calendar.js"></script>
+  </body>
+</html>

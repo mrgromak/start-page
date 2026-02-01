@@ -1,0 +1,554 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;400;700;900&display=swap");
+
+/*
+  CSS Custom Properties (also called CSS Variables):
+  These let us define values once and reuse them throughout the stylesheet.
+  To change the entire site's color scheme, just modify these values!
+
+  Format: --variable-name: value;
+  Use with: var(--variable-name)
+
+  Color Variables (Dark Theme Default):
+  If you want to add a light theme later, uncomment or add :root.light-theme.
+*/
+:root {
+  /* Typography and color palette */
+  --clr-text: hsl(210, 15%, 88%);
+  --clr-body: hsl(210, 20%, 24%);
+  --clr-surface: hsl(210, 19%, 30%);
+  --clr-primary: hsl(157, 52%, 64%);
+  --clr-secondary: hsl(34, 90%, 65%);
+  --clr-accent: hsl(351, 79%, 71%);
+
+  /* Calendar event colors */
+  --clr-day: hsl(34, 80%, 58%);
+  --clr-block: hsl(204, 70%, 53%);
+
+  /* Typography weights and families */
+  --ff-base: "Source Sans 3", sans-serif;
+  --ff-accent: "Source Sans 3", sans-serif;
+  --fs-body: 400; /* Regular for body text */
+  --fs-accent: 900; /* Bold for accent text */
+  --fs-heading: 700; /* Semi-bold for headings */
+
+  /* Fluid typography sizes using clamp */
+  --fs-300: clamp(1.35rem, calc(1.24rem + 0.55vw), 1.67rem);
+  --fs-400: clamp(1.62rem, calc(1.41rem + 1.05vw), 2.22rem);
+  --fs-500: clamp(1.94rem, calc(1.59rem + 1.77vw), 2.96rem);
+  --fs-600: clamp(2.33rem, calc(1.77rem + 2.81vw), 3.95rem);
+  --fs-700: clamp(2.8rem, calc(1.94rem + 4.28vw), 5.26rem);
+}
+
+/* 
+  Base Styles and Resets:
+  Setting box-sizing and removing default margins.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+
+/* 
+  Basic Document Styles:
+  Font sizes, families, and layout.
+*/
+body {
+  font-size: var(--fs-400);
+  font-family: var(--ff-base);
+  font-weight: var(--fs-body);
+  line-height: 1.5;
+  color: var(--clr-text);
+  background-color: var(--clr-body);
+  padding: 1rem;
+}
+
+header h1 {
+  margin-bottom: 0;
+}
+
+header p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--clr-text);
+  font-size: 0.9rem;
+  margin-left: 3px;
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+/* 
+  Headings and Emphasis:
+*/
+h1,
+h2,
+h3 {
+  font-family: var(--ff-accent);
+  font-weight: var(--fs-heading);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-500);
+  font-weight: var(--fs-accent);
+  color: var(--clr-primary);
+}
+
+h2 {
+  font-size: var(--fs-600);
+}
+
+h3 {
+  font-size: var(--fs-300);
+  color: var(--clr-text);
+}
+
+em {
+  font-style: italic;
+}
+
+/* Links */
+a {
+  color: var(--clr-primary);
+}
+a:hover,
+a:focus {
+  color: var(--clr-accent);
+}
+
+/* Lists */
+::marker {
+  color: var(--clr-primary);
+}
+
+/* Ensure images and media scale properly */
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* 
+  Layout for Main Content:
+  Using CSS Grid to arrange main sections.
+*/
+main {
+  display: grid;
+  row-gap: 0.5rem;
+  column-gap: 1rem;
+  grid-template-areas:
+    "account calendar"
+    "subscriptions library"
+    "student faculty";
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-areas:
+      "account"
+      "calendar"
+      "subscriptions"
+      "library"
+      "student"
+      "faculty";
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    column-gap: 1rem;
+  }
+}
+
+/* Grid Area Assignments */
+#account-resources,
+#calendar,
+#subscriptions,
+#library,
+#student-resources,
+#faculty-resources {
+  background-color: var(--clr-surface);
+  border-radius: 8px;
+}
+
+#account-resources {
+  grid-area: account;
+  padding: 1rem;
+}
+#calendar {
+  grid-area: calendar;
+  padding: 1rem;
+}
+#subscriptions {
+  grid-area: subscriptions;
+  padding: 2rem;
+}
+#library {
+  grid-area: library;
+  padding: 2rem;
+}
+#student-resources {
+  grid-area: student;
+  padding: 2rem;
+}
+#faculty-resources {
+  grid-area: faculty;
+  padding: 2rem;
+}
+
+/* 
+  Calendar Styles:
+*/
+#calendar-container {
+  max-height: 30rem;
+  overflow-y: auto;
+  border: 1px solid var(--clr-text);
+  padding: 0;
+  border-radius: 8px;
+  background-color: var(--clr-surface);
+}
+
+ul {
+  list-style: none;
+  padding: 0.4em;
+  margin: 0;
+}
+
+li {
+  font-size: clamp(1rem, 1.4vw, 1.5rem);
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  background-color: var(--clr-surface);
+  color: var(--clr-text);
+}
+
+/* Event styles */
+li.full-day-event {
+  background-color: var(--clr-day);
+  color: var(--clr-surface);
+}
+
+.date-header {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: bold;
+  text-align: center;
+  padding: 0.2em;
+  margin: 0.1em 0;
+}
+
+.day-event {
+  font-weight: bold;
+  background-color: var(--clr-day);
+  color: var(--clr-surface);
+  margin-bottom: 0.2rem;
+  padding: 0.3em 0.4em;
+}
+
+.block-event {
+  background-color: var(--clr-block);
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 0.2rem;
+  padding: 0.3em 0.4em;
+}
+
+/* 
+  Resource Sections (general styling)
+*/
+.resources-section,
+.research-periodicals {
+  text-align: center;
+}
+
+.resources-section h3,
+.research-periodicals h3 {
+  font-size: var(--fs-300);
+  color: var(--clr-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* 
+  General Button Styles:
+*/
+.resource-btn {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--clr-body);
+  color: var(--clr-primary);
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.resource-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* 
+  Account Resources:
+*/
+#account-resources {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+#account-resources h3 {
+  font-size: var(--fs-500);
+  color: var(--clr-primary);
+  margin-bottom: 1.5rem;
+}
+
+#account-resources .resource-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  #account-resources .resource-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  #account-resources .resource-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#account-resources .resource-btn {
+  background-color: var(--clr-block);
+  color: var(--clr-surface);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: clamp(1rem, 1.5vw, 1rem);
+  font-weight: var(--fs-heading);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#account-resources .resource-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  background-color: var(--clr-accent);
+}
+
+#account-resources .resource-btn img {
+  width: 60px;
+  height: auto;
+}
+
+#account-resources .resource-btn span {
+  font-size: clamp(0.85rem, 1.5vw, 1.5rem);
+  font-weight: var(--fs-heading);
+}
+
+/* 
+  Research Periodicals (Subscriptions & Library)
+*/
+.research-periodicals {
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.research-periodicals h3 {
+  font-size: var(--fs-300);
+  color: var(--clr-primary);
+  margin-bottom: 0.75rem;
+}
+
+.research-periodicals h4 {
+  font-size: 1.5rem;
+  color: var(--clr-text);
+  margin: 0;
+  text-align: left;
+}
+
+.research-periodicals p {
+  font-size: 0.85rem;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+@media (max-width: 768px) {
+  .subscriptions,
+  .library {
+    display: block;
+    width: 100%;
+  }
+}
+
+.research-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.research-item {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0.1rem 0;
+  line-height: 1.3;
+  color: var(--clr-text);
+  font-size: 0.85rem;
+}
+
+.tool-link {
+  font-size: 0.9rem;
+  font-weight: var(--fs-heading);
+  color: var(--clr-primary);
+  text-decoration: none;
+  margin-right: 0.3rem;
+}
+
+.tool-link:hover,
+.tool-link:focus {
+  text-decoration: underline;
+  color: var(--clr-accent);
+}
+
+.research-item p,
+.research-item span {
+  display: inline;
+  font-size: 0.8rem;
+  color: var(--clr-text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.research-item p a {
+  color: var(--clr-secondary);
+}
+
+.research-item p a:hover,
+.research-item p a:focus {
+  color: var(--clr-accent);
+}
+
+/* Subscriptions Styling */
+.subscriptions h4 {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.subscriptions .research-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.subscriptions .tool-link {
+  font-size: 1.5rem;
+  font-weight: var(--fs-heading);
+}
+
+.subscriptions .research-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.subscriptions .research-item img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.subscriptions .research-item p {
+  font-size: 0.75rem;
+  display: block;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Library subsection styling */
+.library .tool-link {
+  font-size: 1.4rem;
+  font-weight: var(--fs-heading);
+}
+
+.library .research-item p {
+  font-size: 0.8rem;
+  display: block;
+  border-bottom: 1px solid var(--clr-secondary);
+}
+
+/* Student/Faculty Resources */
+#student-resources,
+#faculty-resources {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+#student-resources .resource-buttons,
+#faculty-resources .resource-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.resources-section .resource-btn {
+  background-color: var(--clr-body);
+  color: var(--clr-primary);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.resources-section .resource-btn:hover {
+  transform: translateY(-3px);
+  background-color: var(--clr-accent);
+  color: var(--clr-surface);
+}
+
+/* Load More Button (for calendar events) */
+.load-more-button {
+  background-color: var(--clr-block);
+  color: var(--clr-surface);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.8rem, 0.9vw, 1rem);
+  margin: 1rem auto;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.load-more-button:hover {
+  background-color: var(--clr-accent);
+}
+
+.load-more-button:disabled {
+  background-color: var(--clr-secondary);
+  cursor: not-allowed;
+}
